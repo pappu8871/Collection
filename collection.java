@@ -1,39 +1,40 @@
 package addressBookCollection;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
-public class AddressBookUC6 {
+public class AddressBookUC7 {
 
 	public static void main(String[] args) {
+      
+		doSetPappu();
+		}
+	
+     private static void doSetPappu() {
 		// TODO Auto-generated method stub
-	ArrayList<String> pappu = new ArrayList <String>();  
-	    
-//		  pappu.add("Aryan");
-//	      pappu.add("Aahan");
-//	      pappu.add("Ganesh");
-//	      pappu.add("Shakshi");
-//	      pappu.add("Rahul");
-//	      pappu.add("Raj");
-	  
-	      //displaying elements
-	      //System.out.println(pappu);
-	  
-	      //Adding name trough index
-	      pappu.add(0, "Aryan");
-	      pappu.add(1, "Aahan");
-	      pappu.add(2, "Ganesh");
-	      pappu.add(3, "Shakshi");
-	      pappu.add(4, "Rahul");
-	      pappu.add(5, "Raj");
-	  
-	      //displaying elements
-	      System.out.println(pappu);
-	      
-	      pappu.add(4, "pappu");
-	      System.out.println(pappu);
-
-	   } 
+		System.out.println(" Not allow duplicate");
+		//creating LinkedHashSet
+		//Duplicate obj is not allow
+		Set<String> set = new LinkedHashSet<>();
+		//Adding obj to the list
+		set.add("Aryan");
+		set.add("Aahan");
+		set.add("Shakshi");
+		set.add("Aryan");
+       
+		for(String str1 : set) {
+		System.out.println(str1);
 	}
+
+	}
+
+	
+	
+}
+
 
 
