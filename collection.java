@@ -5,19 +5,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class AddressBookUC7 {
+public class AddressBookUC8 {
+	
+	
 
 		public static List<HashMap<String,String>> usersList = new ArrayList<HashMap<String,String>>();
+		public static List<ArrayList<HashMap<String,String>>> state = new ArrayList<ArrayList<HashMap<String,String>>>();
 		public static Scanner sc = new Scanner(System.in);
 	
+		public static String fName,lName;
+		public static String Address,city;
+		public static String isstate;
+		public static String zip,phone;
+		public static String email;
+	
+		
 		public static String getUserInput()
 		{
-			String fName,lName;
-			String Address,city;
-			String state;
-			String zip,phone;
-			String email;
-	
+			
 			System.out.println("Enter first and last name:");
 			fName = sc.next();
 			lName = sc.next();
@@ -26,7 +31,7 @@ public class AddressBookUC7 {
 			System.out.println("Enter City:");
 			city = sc.next();
 			System.out.println("Enter state:");
-			state = sc.next();
+			isstate = sc.next();
 			System.out.println("Enter zip:");
 			zip = sc.next();
 			System.out.println("Enter phone:");
@@ -39,7 +44,7 @@ public class AddressBookUC7 {
 			userInfo.put("Last Name", lName);
 			userInfo.put("Address", Address);
 			userInfo.put("city", city);
-			userInfo.put("State",state);
+			userInfo.put("State",isstate);
 			userInfo.put("Zip", zip);
 			userInfo.put("contact", phone);
 			userInfo.put("email_Id", email);
@@ -56,8 +61,9 @@ public class AddressBookUC7 {
 				//
 			} else {
 				usersList.add(userInfo);
+				
 			}
-	
+
 			System.out.println("Do you want to add contact in address book (Y/N)");
 			return sc.next();
 		}
@@ -70,8 +76,23 @@ public class AddressBookUC7 {
 			while(userDecision.equalsIgnoreCase("Y")) {
 				userDecision = getUserInput();
 			}
-	
-					
+
+			System.out.println("Number of record by city:");
+			System.out.println("Number of contacts in address book - " + usersList.size());			
+
+			System.out.println("Enter a person a you want to search:");
+			String isCheck = sc.next();
+			
+			for( HashMap<String,String> user: usersList )
+			{
+				if(isCheck.equals(user.get("First Name")) )
+				{
+					System.out.println("This name present in the record:");
+				}
+			}
+			
+			
 		}
 	
-}
+	}
+
