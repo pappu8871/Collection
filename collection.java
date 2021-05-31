@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class AddressBookUC9 {
-
-
+public class AddressBookUC10 {
 
 	public static List<HashMap<String,String>> usersList = new ArrayList<HashMap<String,String>>();
 	public static List<ArrayList<HashMap<String,String>>> state = new ArrayList<ArrayList<HashMap<String,String>>>();
@@ -49,7 +47,20 @@ public class AddressBookUC9 {
 		userInfo.put("contact", phone);
 		userInfo.put("email_Id", email);
 
-		usersList.add(userInfo);
+		boolean userExist= false;
+		for(HashMap<String,String> user: usersList) {
+			String emailId = user.get("email_Id");
+			if(emailId.equalsIgnoreCase(email)) {
+				userExist = true;
+			}
+		}
+
+		if(userExist) {
+			//
+		} else {
+			usersList.add(userInfo);
+
+		}
 
 		System.out.println("Do you want to add contact in address book (Y/N)");
 		return sc.next();
@@ -64,28 +75,35 @@ public class AddressBookUC9 {
 			userDecision = getUserInput();
 		}
 
+		System.out.println("Number of record by city:");
+		System.out.println("Number of contacts in address book - " + usersList.size());			
 
-		System.out.println("Search by City or State:");
-		String isSearch = sc.next();
+		System.out.println("Enter first name you want to search:");
+		String isCheck = sc.next();
 
-		System.out.println("********Details******:");
-
-		for(HashMap<String,String> user: usersList)
+		int countSatara = 0;
+		int countPune = 0;
+		for( HashMap<String,String> user: usersList )
 		{
-			if(isSearch.equals(user.get("city")) || isSearch.equals(user.get("State")))  
+			if(isCheck.equals(user.get("First Name")) && "satara".equals(user.get("city")))
 			{
-				System.out.println("Record details: ");
-				System.out.println("First Name : " + user.get("First Name"));
-				System.out.println("Last Name : " + user.get("Last Name"));
-				System.out.println("Address : " + user.get("Address"));
-				System.out.println("city : " + user.get("city"));
-				System.out.println("State : " + user.get("State"));
-				System.out.println("Zip : " + user.get("Zip"));
-				System.out.println("email_Id : " + user.get("email_Id"));
-				System.out.println("contact : " + user.get("contact"));
+				countSatara ++;
+			}
 
+			if ( isCheck.equals(user.get("First Name")) && "pune".equals(user.get("city"))) 
+			{
+				countPune ++;
 			}
 		}
+		System.out.println("Displaying count based on number of occurences by city or state:");
+
+
+		System.out.println(countSatara+"\t number of time this person name will occures in satara:");
+		System.out.println(countPune+"\t number of time this person name will occures in pune:");
+
+
 	}
 
 }
+
+
