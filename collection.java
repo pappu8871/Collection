@@ -1,40 +1,77 @@
-package addressBookCollection;
+package com.addressbook;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Scanner;
 
 public class AddressBookUC7 {
 
-	public static void main(String[] args) {
-      
-		doSetPappu();
+		public static List<HashMap<String,String>> usersList = new ArrayList<HashMap<String,String>>();
+		public static Scanner sc = new Scanner(System.in);
+	
+		public static String getUserInput()
+		{
+			String fName,lName;
+			String Address,city;
+			String state;
+			String zip,phone;
+			String email;
+	
+			System.out.println("Enter first and last name:");
+			fName = sc.next();
+			lName = sc.next();
+			System.out.println("Enter Address:");
+			Address = sc.next();
+			System.out.println("Enter City:");
+			city = sc.next();
+			System.out.println("Enter state:");
+			state = sc.next();
+			System.out.println("Enter zip:");
+			zip = sc.next();
+			System.out.println("Enter phone:");
+			phone = sc.next();
+			System.out.println("Enter email:");
+			email = sc.next();
+	
+			HashMap<String,String> userInfo = new HashMap<>();
+			userInfo.put("First Name",fName);
+			userInfo.put("Last Name", lName);
+			userInfo.put("Address", Address);
+			userInfo.put("city", city);
+			userInfo.put("State",state);
+			userInfo.put("Zip", zip);
+			userInfo.put("contact", phone);
+			userInfo.put("email_Id", email);
+	
+			boolean userExist= false;
+			for(HashMap<String,String> user: usersList) {
+				String emailId = user.get("email_Id");
+				if(emailId.equalsIgnoreCase(email)) {
+					userExist = true;
+				}
+			}
+	
+			if(userExist) {
+				//
+			} else {
+				usersList.add(userInfo);
+			}
+	
+			System.out.println("Do you want to add contact in address book (Y/N)");
+			return sc.next();
 		}
 	
-     private static void doSetPappu() {
-		// TODO Auto-generated method stub
-		System.out.println(" Not allow duplicate");
-		//creating LinkedHashSet
-		//Duplicate obj is not allow
-		Set<String> set = new LinkedHashSet<>();
-		//Adding obj to the list
-		set.add("Aryan");
-		set.add("Aahan");
-		set.add("Shakshi");
-		set.add("Aryan");
-       
-		for(String str1 : set) {
-		System.out.println(str1);
-	}
-
-	}
-
+		public static void main(String args[]) {
 	
+			System.out.println("Do you want to add contact in address book (Y/N)");
+			String userDecision = sc.next();
+	
+			while(userDecision.equalsIgnoreCase("Y")) {
+				userDecision = getUserInput();
+			}
+	
+					
+		}
 	
 }
-
-
-
